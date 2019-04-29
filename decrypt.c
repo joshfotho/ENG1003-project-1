@@ -58,6 +58,7 @@ int decrypt(int k)
             printf("%c", text[index]);
             fprintf(output, "%c", text[index]);
         }
+        fprintf(output, "%c", 10);
     }       
     
     
