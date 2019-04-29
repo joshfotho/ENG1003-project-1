@@ -27,6 +27,7 @@ int main()
             perror("fopen()"); //prints a message if problem with file
         } 
         
+        
         //stores each element of the file into an array
         while(feof(input) != 1 )
         {
@@ -70,11 +71,14 @@ int main()
         if(text[6] == 67 )
         {
            /*if a '?' is in the 'key' section of the header, then the program will detemine themost common letter and assume
-           it is an 'E'*/
+           it is an 'E', followed by 'T'*/
            
            if(text[14] == 63) 
             {
                 int k = letterCount() -69; //most common letter - 'E' will determine the key to be used
+                decrypt(k);
+                printf("\n");
+                k = letterCount() -84;
                 decrypt(k);
             }
             
