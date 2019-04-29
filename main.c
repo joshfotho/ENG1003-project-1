@@ -1,38 +1,86 @@
-#include <stdio.h>
-#include <string.h>
+int substitutionEncrypt(void);
+int substitutionDecrypt(void);
+int numberCount(void);
 int main()
-{
-    int index = 0; // the position of each element int the array
-    char text[100]; // the text to be encrypted;
+{   
+    char mode; 
+    printf("Would you like to encrypt or decrypt? ('e'/'d'):\n ");
+    scanf("%c", &mode);
     
-    int k = 3;//the amount that that letters are shifted by
-    FILE *input;
-    input = fopen("test.txt", "r");
-    if(input == NULL)
+    if(mode == 101) // e is equal to 101
     {
-        perror("fopen()"); //prints a message if problem with file
-    }  
-    
-    /*This for loop shifts each element of the string by 'k' 
-    letters one letter at a time */
-    for(index = 0; index < 100; index++)
-    {
-        fscanf(input, "%c", &text[index]);
         
-        //capital letters
-        if(text[index] >=65 && text[index] <=90)
+        int index = 0;
+        char text [1000];
+    
+        FILE *input;
+        input = fopen("input.txt", "r");
+        if(input == NULL)
+    
         {
-            (text[index]) = ((text[index] -65 + k + 26)%26) +65;
+            perror("fopen()"); //prints a message if problem with file
+        } 
+    
+        while(feof(input) != 1 )
+        {
+            fscanf(input, "%c", &text[index]);
+            index++;
+        }
+    
+        if(text[6] == 67 )
+        {
+            int k = text[14] - 65;
+            encrypt(k);    
         }
         
-        //lower case letters. converted to capitals
-        else if(text[index] >= 97 && text[index] <=122)//lower case
+        else
         {
-            (text[index]) = ((text[index] - 97 + k +26)%26) + 65;
+            substitutionEncrypt();
         }
-
+          
     }
     
-    printf("The encrypted message is: %s \n", text);//prints adjusted string
+    if(mode == 100) // d is equal to 100
+    {
+        int index = 0;
+        char text [1000];
     
+        FILE *input;
+        input = fopen("input.txt", "r");
+        if(input == NULL)
+    
+        {
+            perror("fopen()"); //prints a message if problem with file
+        } 
+    
+        while(feof(input) != 1 )
+        {
+            fscanf(input, "%c", &text[index]);
+            index++;
+        }
+    
+        if(text[6] == 67 )
+        {
+            if(text[14] == 63)
+            {
+                int k = numberCount() -69;
+                decrypt(k);
+            }
+            
+            else 
+            {
+                int k = text[14] - 65;
+                decrypt(k);   
+            }
+
+        }
+        
+        else
+        {
+            substitutionDecrypt();
+        }
+        
+    }
+    
+    return(0);
 }
