@@ -1,12 +1,12 @@
 #include<stdio.h>
 #include <string.h>
-int letterCount()
+int numberCount()
 {
     int elementIndex = 0, letterIndex = 65, letterCount = 0, maxLetterCount = 0; 
     char currentLetter = 65;
-    char text[10];
+    char text[1000];
     FILE *input;
-    input = fopen("test.txt", "r");
+    input = fopen("input.txt", "r");
     if(input == NULL)
     {
         perror("fopen()"); //prints a message if problem with file
@@ -19,9 +19,11 @@ int letterCount()
     int length = strlen(text);
 
     
+    
+    
     for(letterIndex = 65; letterIndex  <90; letterIndex ++)
     {   letterCount = 0;
-       for(elementIndex = 0; elementIndex < length; elementIndex ++)
+       for(elementIndex = 14; elementIndex < length; elementIndex ++)
        {
            if((int)text[elementIndex] == (int)letterIndex)
            {
